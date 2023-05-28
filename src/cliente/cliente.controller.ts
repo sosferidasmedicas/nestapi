@@ -14,6 +14,7 @@ export class ClienteController {
 
   @Get()
   findAll() {
+    console.log("PASSO AQUI")
     return this.clienteService.findAll();
   }
 
