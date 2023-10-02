@@ -1,10 +1,11 @@
+import { RepositoriesModule } from '@libs/repositories';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClienteModule } from './cliente/cliente.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [ClienteModule],
+  imports: [UsersModule, RepositoriesModule],
   controllers: [AppController],
   providers: [AppService],
 })
