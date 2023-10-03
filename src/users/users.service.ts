@@ -5,6 +5,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from '../../libs/repositories/src/mysql/entities/user.entity';
 import { LoginUserDto } from './dto/siningin-user-dto';
+import { response } from 'express';
 
 @Injectable()
 export class UsersService {
@@ -12,11 +13,13 @@ export class UsersService {
     private readonly userRepository: UserRepository,
   ) {}
 
-  signin(login: LoginUserDto) {
+  async signin(login: LoginUserDto) {
     const user = login.usuario
     const password = login.password
 
-    this.userRepository.login(user, password)
+   const loginResponse = await this.userRepository.login(user, password)
+   return loginResponse;
+
   }
 
   create(createUserDto: CreateUserDto) {
